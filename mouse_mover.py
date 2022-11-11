@@ -4,8 +4,6 @@
 
 from tkinter import *
 import pyautogui
-import keyboard
-import time
 
 window = Tk()
 window.title('Mouse Mover')
@@ -16,12 +14,16 @@ Grid.columnconfigure(window,0,weight=1)
 
 status = BooleanVar()
 status= True
-def mouse_mover_on():
+def mouse_move():
     global status
     if status == True:
-        pyautogui.moveRel(0,10)
-        pyautogui.moveRel(0,-10)
-        window.after(1000,mouse_mover_on)
+        pyautogui.moveRel(0,15)
+        pyautogui.moveRel(0,-15)
+        window.after(5000,mouse_move)
+def mouse_mover_on():
+    global status
+    status = True
+    mouse_move()
 def mouse_mover_off():
     global status
     status = False
